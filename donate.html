@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Now! - TreeforMe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="donate.css">
+    <link rel="icon" type="image/x-icon" href="images/Favicon_icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        .cost-info {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #1A5319;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav id="sideMenu" class="side-menu collapsed">
+        <div id="menuToggle" class="menu-toggle">&#9776;</div>
+        <ul class="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="donate.html">Donate Now</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+    
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <img src="./images/TreeforMe_logo.png" alt="TreeForMe Logo" class="logo">
+        </div>
+    </header>
+
+    <div class="donate-container">
+        <h1>Plant by your name!</h1>
+        <form class="donate-form">
+            <input type="text" name="YourName" placeholder="Your Name" required>
+            <input type="email" name="YourEmail" placeholder="Your Email" required>
+            <input type="tel" name="donorPhone" placeholder="Enter only 10 digit Mob No" required>
+            <input type="date" name="donationDate" required>
+            <input type="text" name="instagramID" placeholder="Instagram ID (Optional)">
+
+            <input type="number" name="plantCount" id="plantCount" placeholder="Plant Count" required>
+            <div id="costInfo" class="cost-info"></div> <!-- This is where the cost will be displayed -->
+
+            <input type="submit" value="Donate Now">
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2024 TreeForMe. All rights reserved. Together, we can make the world greener.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="donate.html">Donate Now</a> |
+            <a href="About.html">About Us</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('plantCount').addEventListener('input', function () {
+            const plantCount = parseInt(this.value) || 0; // Get the value of plant count, default to 0 if invalid
+            const costPerPlant = 50; // Cost per plant
+            const totalCost = plantCount * costPerPlant;
+
+            const costInfoDiv = document.getElementById('costInfo');
+
+            // Display the cost if a valid number of plants is entered
+            if (plantCount > 0) {
+                costInfoDiv.textContent = `Total Cost: ₹${totalCost} for ${plantCount} plants.`;
+            } else {
+                costInfoDiv.textContent = ''; // Clear the info if input is invalid or zero
+            }
+        });
+        // Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Collapsible Side Menu
+const sideMenu = document.getElementById('sideMenu');
+const menuToggle = document.getElementById('menuToggle');
+
+// Toggle the sidebar when the menu toggle button is clicked
+menuToggle.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent the click event from propagating to the document
+    sideMenu.classList.toggle('collapsed');
+});
+
+// Collapse the sidebar when clicking outside of it
+document.addEventListener('click', function(event) {
+    // Only collapse if the menu is open and the click is outside the menu and the toggle button
+    if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target) && !sideMenu.classList.contains('collapsed')) {
+        sideMenu.classList.add('collapsed');
+    }
+});
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+body {
+    font-family: 'Tenor Sans', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header */
+header {
+    background-color: #1A5319; /* Dark green background */
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.logo {
+    max-width: 10rem ; /* Maximum size for the logo on larger screens */
+    width: 100%;       /* Full width for smaller screens */
+    height: auto;      /* Maintains aspect ratio */
+}
+
+header h1 {
+    font-size: 3rem;
+    color: white; /* Dark Brown, wood-like color */
+}
+
+header p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: white; /* White subtitle text */
+}
+
+/* Side Menu Bar */
+#sideMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    padding-top: 20px;
+    transition: width 0.3s ease, background-color 0.3s ease; /* Smooth transition for both width and background */
+    overflow: hidden;
+}
+
+#sideMenu.collapsed {
+    width: 60px; /* When collapsed, it shrinks to 60px */
+    background-color: rgba(0, 0, 0, 0); /* Keep transparent when collapsed */
+}
+
+#sideMenu:not(.collapsed) {
+    background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity when expanded */
+}
+
+#sideMenu ul {
+    list-style-type: none;
+    padding: 0;
+    transition: opacity 0.3s ease;  /* Smooth fade-out of menu items */
+}
+
+#sideMenu.collapsed ul {
+    opacity: 0;  /* Fade out the menu items when collapsed */
+    display: none;  /* Hides them completely once the animation finishes */
+}
+
+#sideMenu ul li {
+    margin: 20px 0;
+}
+
+#sideMenu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    display: block;
+}
+
+#sideMenu ul li a:hover {
+    background-color: #1A5319;
+}
+
+.menu-toggle {
+    font-size: 2rem;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.donate-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background:rgba(256, 256, 256, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.donate-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1A5319;
+    margin-bottom: 20px;
+}
+
+.donate-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.donate-form input, .donate-form select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.donate-form input[type="submit"] {
+    background-color: #508D4E;
+    color: white;
+    border: none;
+    cursor: pointer;
+    grid-column: span 2;
+    font-size: 1.2rem;
+}
+
+.donate-form input[type="submit"]:hover {
+    background-color: #1A5319;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label span {
+    margin-left: 10px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 15px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    bottom: 2.5px;
+    left: 5px;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #508D4E;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+@media(max-width: 768px) {
+    .donate-form {
+        grid-template-columns: 1fr;
+    }
+}
